@@ -1,3 +1,0 @@
-/mnt/d/Home/Projects/PetProjects/budget-forecast/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/d/Home/Projects/PetProjects/budget-forecast/cmake-build-debug/CMakeFiles/budget_forecast.dir
-/mnt/d/Home/Projects/PetProjects/budget-forecast/cmake-build-debug/CMakeFiles/edit_cache.dir
