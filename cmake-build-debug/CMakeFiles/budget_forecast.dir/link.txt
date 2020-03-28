@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/budget_forecast.dir/main.cpp.o  -o budget_forecast 
