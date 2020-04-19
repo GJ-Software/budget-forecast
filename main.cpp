@@ -2,8 +2,6 @@
 #include "loadFile.h"
 
 
-
-
 int main (int argc, char *argv[])
 {
     GtkWidget *window;
@@ -17,5 +15,5 @@ int main (int argc, char *argv[])
 
 extern "C" G_MODULE_EXPORT void testClicked (GtkButton *button, gpointer label)
 {
-    gtk_label_set_text(GTK_LABEL (label), "FUCK OFF");
+    gtk_label_set_text(GTK_LABEL (label), "AYE");
 }
