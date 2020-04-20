@@ -1,21 +1,39 @@
-#include <gtkmm.h>
-#include "loadFile.h"
+#include <iostream>
+#include  <gtkmm.h>
 
+Gtk::Window* mainWindow = nullptr;
 
-
-
-int main (int argc, char *argv[])
-{
-    GtkWidget *window;
-    gtk_init (&argc, &argv);
-    window = create_window();
-    gtk_widget_show (window);
-    gtk_main ();
-    return 0;
+static void testClicked() {
+    std::cout << "test" << std::endl;
 }
 
+int main (int argc, char *argv[]) {
+    auto app = Gtk::Application::create(argc, argv, "org.gtkmm.budget-forecast");
+    auto refBuilder = Gtk::Builder::create();
+    try {
+        refBuilder->add_from_file("basic.glade");
+    } catch(const Glib::FileError& ex) {
+        std::cerr << "FileError: " << ex.what() << std::endl;
+        return 1;
+    } catch(const Glib::MarkupError& ex) {
+        std::cerr << "MarkupError: " << ex.what() << std::endl;
+        return 1;
+    } catch(const Gtk::BuilderError& ex) {
+        std::cerr << "BuilderError: " << ex.what() << std::endl;
+        return 1;
+    }
 
-extern "C" G_MODULE_EXPORT void testClicked (GtkButton *button, gpointer label)
-{
-    gtk_label_set_text(GTK_LABEL (label), "FUCK OFF");
+    refBuilder->get_widget("window", mainWindow);
+
+    if(mainWindow) {
+        Gtk::Button* heckButton = nullptr;
+        refBuilder->get_widget("button1", heckButton);
+
+        if(heckButton) {
+            heckButton->signal_clicked().connect(sigc::ptr_fun(&testClicked));
+        }
+
+        app->run(*mainWindow);
+    }
+    return 0;
 }
