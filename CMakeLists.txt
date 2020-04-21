@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(budget_forecast)
+project(budget_forecast VERSION 0.1)
 
 set(CMAKE_CXX_STANDARD 17)
 
