@@ -3,7 +3,8 @@
 
 Gtk::Window* mainWindow = nullptr;
 
-static void testClicked() {
+static void testClicked(Gtk::Label* heckLabel) {
+    heckLabel->set_text("HECK YOU");
     std::cout << "test" << std::endl;
 }
 
@@ -30,7 +31,9 @@ int main (int argc, char *argv[]) {
         refBuilder->get_widget("button1", heckButton);
 
         if(heckButton) {
-            heckButton->signal_clicked().connect(sigc::ptr_fun(&testClicked));
+            Gtk::Label* heckLabel = nullptr;
+            refBuilder->get_widget("label1", heckLabel);
+            heckButton->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&testClicked), heckLabel));
         }
 
         app->run(*mainWindow);
