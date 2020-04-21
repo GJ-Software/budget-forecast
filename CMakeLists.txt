@@ -8,6 +8,5 @@ pkg_check_modules(GTKMM gtkmm-3.0)
 
 include_directories(${GTKMM_INCLUDE_DIRS})
 link_directories(${GTKMM_LIBRARY_DIRS})
-
-add_executable(budget_forecast main.cpp loadFile.cpp loadFile.h)
+add_executable(budget_forecast main.cpp)
 target_link_libraries(${CMAKE_PROJECT_NAME} ${GTKMM_LIBRARIES})
