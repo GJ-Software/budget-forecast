@@ -12,7 +12,8 @@ int main (int argc, char *argv[]) {
     auto app = Gtk::Application::create(argc, argv, "org.gtkmm.budget-forecast");
     auto refBuilder = Gtk::Builder::create();
     try {
-        refBuilder->add_from_file("basic.glade");
+        // TODO: copy or bundle glade file with exe file
+        refBuilder->add_from_file("src/glade/basic.glade");
     } catch(const Glib::FileError& ex) {
         std::cerr << "FileError: " << ex.what() << std::endl;
         return 1;
