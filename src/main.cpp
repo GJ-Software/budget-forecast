@@ -26,11 +26,20 @@ static void testClicked(Gtk::Label* heckLabel) {
 int main (int argc, char *argv[]) {
 
     try {
-        SQLite::Database db("/data/Test_DB.db3", SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
+        SQLite::Database db("src/data/Test_DB.db3", SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
         std::cout << "SQLite database file '" << db.getFilename().c_str() << "' opened successfully\n";
+
+        db.exec("DROP TABLE IF EXISTS test");
+
+        // Begin transaction
+        SQLite::Transaction transaction(db);
+
+        db.exec("CREATE TABLE test (id INTEGER PRIMARY KEY, value TEXT)");
 
         int nb = db.exec("INSERT INTO test VALUES (NULL, \"test\")");
         std::cout << "INSERT INTO test VALUES (NULL, \"test\")\", returned " << nb << std::endl;
+
+        // Commit transaction
 
     }
     catch (std::exception& e)
