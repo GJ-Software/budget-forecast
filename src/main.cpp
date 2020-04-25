@@ -26,7 +26,7 @@ static void testClicked(Gtk::Label* heckLabel) {
 int main (int argc, char *argv[]) {
 
     try {
-        SQLite::Database db("/assets/data/Test_DB.db3", SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
+        SQLite::Database db("/data/Test_DB.db3", SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
         std::cout << "SQLite database file '" << db.getFilename().c_str() << "' opened successfully\n";
 
         int nb = db.exec("INSERT INTO test VALUES (NULL, \"test\")");
