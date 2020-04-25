@@ -49,7 +49,8 @@ else (MSVC)
     set(CPPLINT_ARG_OUTPUT      "--output=eclipse")
     set(CPPCHECK_ARG_TEMPLATE   "--template=gcc")
     # Useful compile flags and extra warnings
-#    add_compile_options(-fstack-protector)
+    # https://github.com/SRombauts/SQLiteCpp/issues/74
+    # add_compile_options(-fstack-protector)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long") # C++ only, don't bother with sqlite3
     if (CMAKE_COMPILER_IS_GNUCXX)
         # GCC flags
