@@ -9,24 +9,20 @@ pkg_check_modules(GTKMM gtkmm-3.0)
 
 file(GLOB SOURCES src/*.cpp)
 
-
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp/include)
-
-
-add_executable(main src/main.cpp)
-target_link_libraries(main
-        SQLiteCpp
-        sqlite3
-        pthread
-        dl
-        )
-
 
 include_directories(${GTKMM_INCLUDE_DIRS})
 link_directories(${GTKMM_LIBRARY_DIRS})
 
 add_executable(budget_forecast ${SOURCES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${GTKMM_LIBRARIES})
+target_link_libraries(budget_forecast
+        SQLiteCpp
+        sqlite3
+        pthread
+        dl
+        ${GTKMM_LIBRARIES}
+        )
 
-target_link_libraries(${CMAKE_PROJECT_NAME} sqlite3)
+
+
